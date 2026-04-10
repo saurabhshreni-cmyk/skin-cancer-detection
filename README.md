@@ -39,11 +39,33 @@ This project follows a two-stage medical imaging workflow:
 - Image identifier column: `isic_id`.
 - Used for classifier training and ROI-vs-full-image comparison.
 
-## Results
+## 📊 Results
 
 - Segmentation Dice Score: ~0.85
 - ROI Model ROC-AUC: ~0.88
 - Full Image ROC-AUC: ~0.86
+
+### ⚠️ Note on Metrics
+
+Although the model achieves a strong ROC-AUC (~0.88), precision is relatively low due to class imbalance in the dataset.
+
+- ROC-AUC measures ranking ability (threshold-independent)
+- Precision depends on classification threshold (default = 0.5)
+
+👉 On imbalanced data, a fixed threshold can lead to poor precision despite good ranking performance.
+
+This indicates that the model distinguishes classes well but requires better threshold calibration for practical use.
+
+**Future improvements:**
+- Threshold tuning
+- Focal loss / class weighting
+- Better handling of class imbalance
+
+### 🔍 Confusion Matrix Insight
+
+The model produces a higher number of false positives, which contributes to low precision.
+
+This behavior is expected in imbalanced datasets where the model prioritizes detecting positive cases.
 
 ## Key Insight
 
