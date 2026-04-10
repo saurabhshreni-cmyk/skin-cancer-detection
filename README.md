@@ -1,5 +1,7 @@
-
 # Skin Cancer Detection using Segmentation + Classification
+
+## 🌐 Live Demo
+👉 https://skin-cancer-detection-saurabh.streamlit.app
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.2-red)
