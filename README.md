@@ -1,4 +1,10 @@
+
 # Skin Cancer Detection using Segmentation + Classification
+
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![Framework](https://img.shields.io/badge/Framework-PyTorch-red)
+![Task](https://img.shields.io/badge/Task-Medical%20Imaging-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 An end-to-end deep learning pipeline for skin lesion analysis that combines lesion **segmentation** and **classification** for improved diagnostic performance.
 
