@@ -64,3 +64,5 @@ outputs/*
 !outputs/reports/
 !outputs/reports/**
 
+outputs/
+*.png
