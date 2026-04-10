@@ -18,6 +18,6 @@ keywords:
   - segmentation
   - classification
   - pytorch
-repository-code: "https://github.com/<your-username>/<your-repo>"
+repository-code: "https://github.com/saurabhshreni-cmyk/skin-cancer-detection"
 version: "1.0.0"
 date-released: 2026-04-07
