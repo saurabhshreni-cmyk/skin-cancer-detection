@@ -48,8 +48,21 @@ This project follows a two-stage medical imaging workflow:
 ## 📊 Results
 
 - Segmentation Dice Score: ~0.85
-- ROI Model ROC-AUC: ~0.88
-- Full Image ROC-AUC: ~0.86
+| Model | ROC-AUC |
+|------|--------|
+| ROI-based | 0.8746 |
+| Full Image | **0.8793** |
+
+### ⚠️ Note on Interpretation
+
+Although segmentation-based ROI extraction was expected to improve performance, the full-image model slightly outperforms the ROI-based model in this setup.
+
+This may be due to:
+- Loss of contextual information during ROI cropping
+- Imperfect segmentation masks
+- Dataset imbalance affecting classification behavior
+
+Despite this, Grad-CAM visualizations show improved focus on lesion regions in the ROI-based model.
 
 ### ⚠️ Note on Metrics
 
