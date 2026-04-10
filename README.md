@@ -44,14 +44,12 @@ This project follows a two-stage medical imaging workflow:
 - Target: binary label from `target` column (`0` benign, `1` malignant).
 - Image identifier column: `isic_id`.
 - Used for classifier training and ROI-vs-full-image comparison.
-
 ## 📊 Results
 
-- Segmentation Dice Score: ~0.85
-| Model | ROC-AUC |
-|------|--------|
-| ROI-based | 0.8746 |
-| Full Image | **0.8793** |
+| Metric | ROI Model | Full Image Model |
+|--------|----------|-----------------|
+| ROC-AUC | 0.8746 | **0.8793** |
+| Dice Score (Segmentation) | 0.85 | — |
 
 ### ⚠️ Note on Interpretation
 
