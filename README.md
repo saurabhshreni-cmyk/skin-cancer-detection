@@ -22,6 +22,13 @@ This project follows a two-stage medical imaging workflow:
 - Stage 3: Train EfficientNet-B0 classifier on ROI crops (and compare with full-image baseline).
 - Stage 4: Evaluate with ROC/PR curves, confusion matrix, and Grad-CAM visual explanations.
 
+## 🎯 Demo Features
+
+- Upload dermoscopic image
+- ROI-based and Full-image prediction
+- Grad-CAM visualization
+- Real-time inference
+
 ## Key Features
 
 - U-Net segmentation model implemented from scratch.
@@ -47,13 +54,19 @@ This project follows a two-stage medical imaging workflow:
 - Target: binary label from `target` column (`0` benign, `1` malignant).
 - Image identifier column: `isic_id`.
 - Used for classifier training and ROI-vs-full-image comparison.
+  
 ## 📊 Results
 
-| Metric | ROI Model | Full Image Model |
-|--------|----------|-----------------|
-| ROC-AUC | 0.8746 | **0.8793** |
-| Dice Score (Segmentation) | 0.85 | — |
+| Model | Dice Score | ROC-AUC |
+|------|-----------|--------|
+| U-Net (Segmentation) | ~0.85 | — |
+| ROI Classifier | — | 0.8746 |
+| Full Image Classifier | — | 0.8793 |
 
+### ⚠️ Note on Metrics
+
+ROC-AUC is high but precision is low due to class imbalance.
+This shows good ranking but poor threshold calibration.
 ### ⚠️ Note on Interpretation
 
 Although segmentation-based ROI extraction was expected to improve performance, the full-image model slightly outperforms the ROI-based model in this setup.
@@ -153,10 +166,6 @@ Generated visual outputs are saved under `outputs/figures/`, including:
 
 - **Checkpoints** are stored in: `checkpoints/`
   - Example: `unet_best.pth`, `efficientnet_b0_roi_best.pth`
-- **Outputs** are stored in: `outputs/`
-  - Figures: `outputs/figures/`
-  - Reports/CSVs: `outputs/reports/`
-  - ROI crops: `outputs/roi_crops/`
 
 ## Project Structure
 
@@ -197,4 +206,6 @@ PE2_Project/
 - Test-time augmentation and model ensembling.
 - Threshold calibration for clinical sensitivity targets.
 - External validation on additional dermoscopy datasets.
+
+  
 
