@@ -136,19 +136,21 @@ Modes: `roi` | `full` | `both`
 ---
 
 ## Project Structure
+
 skin-cancer-detection/
-├── app.py
-├── predict.py
-├── config.py
-├── dataset.py
-├── model_unet.py
-├── train_segmentation.py
-├── train_classification.py
-├── generate_evaluation_plots.py
-├── requirements.txt
-├── checkpoints/
-├── assets/
-└── outputs/
+├── app.py # Streamlit web app
+├── predict.py # Inference script
+├── config.py # Configuration settings
+├── dataset.py # Dataset loader
+├── model_unet.py # U-Net model (segmentation)
+├── train_segmentation.py # Train segmentation model
+├── train_classification.py # Train classification model
+├── generate_evaluation_plots.py# Generate ROC, PR, CM plots
+├── requirements.txt # Dependencies
+
+├── checkpoints/ # Saved model weights (.pth)
+├── assets/ # Images used in README (GitHub-visible)
+└── outputs/ # Generated results (ignored in Git)
 
 ---
 
