@@ -1,76 +1,176 @@
 # Skin Cancer Detection using Segmentation + Classification
 
-## 🌐 Live Demo
+## Live Demo
 👉 https://skin-cancer-detection-saurabh.streamlit.app
+
+---
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.2-red)
 ![Dataset](https://img.shields.io/badge/Dataset-ISIC-green)
+![Streamlit](https://img.shields.io/badge/Streamlit-Deployed-success)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
-## 🧠 Overview
+## Overview
 
-End-to-end deep learning pipeline for skin lesion analysis:
+This project presents an end-to-end deep learning pipeline for skin lesion analysis, combining:
 
-`Image → Segmentation → ROI → Classification → Prediction + Grad-CAM`
+- **Segmentation (U-Net)** — isolates lesion region
+- **ROI Extraction** — focuses on lesion area
+- **Classification (EfficientNet-B0)** — predicts malignancy
+- **Grad-CAM** — explains model decisions
 
+### Pipeline
+Image → Segmentation → ROI Extraction → Classification → Prediction + Explainability
 ---
 
-## 🎯 Demo Features
+## Demo Features
 
-- Upload dermoscopic image
-- ROI vs Full-image prediction
+- Upload dermoscopic image (JPG/PNG)
+- ROI-based and full-image prediction
 - Grad-CAM visualization
-- Real-time inference
+- Real-time inference via Streamlit UI
+- Deployed and accessible online
 
 ---
 
-## 📊 Results
+## Dataset
 
-| Model | Dice Score | ROC-AUC |
-|------|-----------|--------|
-| U-Net (Segmentation) | ~0.85 | — |
-| ROI Classifier | — | 0.8746 |
-| Full Image Classifier | — | 0.8793 |
+### ISIC 2018 (Segmentation)
+- Input: dermoscopic images
+- Target: binary lesion masks (`*_segmentation.png`)
+- Used for training U-Net segmentation
 
----
-
-## ⚠️ Key Insights
-
-- Full-image model slightly outperforms ROI model
-- ROI improves interpretability (better Grad-CAM focus)
-- Class imbalance affects precision
+### ISIC 2020 (Classification)
+- Input: dermoscopic images
+- Target: binary label (`0 = benign`, `1 = malignant`)
+- Used for classification models
 
 ---
 
-## 🔍 Visual Results
+## Results
+
+| Model | Dice Score | ROC-AUC | Accuracy | Recall | F1 |
+|-------|-----------|---------|----------|--------|----|
+| U-Net (Segmentation) | 0.85 | — | — | — | — |
+| ROI Classifier | — | 0.8746 | 0.8212 | 0.7521 | 0.1293 |
+| Full Image Classifier | — | **0.8793** | 0.8015 | 0.8034 | 0.1251 |
+
+---
+
+## Key Observations
+
+- Full-image model marginally outperforms ROI-based model on AUC (0.8793 vs 0.8746)
+- ROI model provides better Grad-CAM focus — activations concentrate on the lesion interior
+- Low precision on both models is expected due to severe class imbalance (~98% benign in ISIC 2020)
+- A fixed threshold of 0.5 on imbalanced data maximises recall at the cost of precision — this is the intended behaviour for a screening tool
+
+---
+
+## Note on Metrics
+
+- **ROC-AUC (~0.88)** is the primary metric — threshold-independent ranking ability
+- **Precision is low (~0.07)** due to the 98:2 class imbalance at threshold 0.5
+- The model distinguishes classes well; threshold calibration is needed for deployment
+
+### Future Improvements
+- Threshold calibration to clinical sensitivity targets
+- K-fold cross-validation
+- Attention U-Net / DeepLabV3+ for better segmentation
+- Test-time augmentation and model ensembling
+- External dataset validation
+
+---
+
+## Visual Results
 
 ### ROC Curve
-| ROI Model | Full Model |
-|----------|------------|
-| ![](assets/roc_curve_roi.png) | ![](assets/roc_curve_full.png) |
 
-### Precision-Recall Curve
-| ROI Model | Full Model |
-|----------|------------|
-| ![](assets/pr_curve_roi.png) | ![](assets/pr_curve_full.png) |
-
-### Confusion Matrix
-| ROI Model | Full Model |
-|----------|------------|
-| ![](assets/confusion_matrix_roi.png) | ![](assets/confusion_matrix_full.png) |
-
-### Grad-CAM
-| ROI Model | Full Model |
-|----------|------------|
-| ![](assets/gradcam_roi.png) | ![](assets/gradcam_full.png) |
+<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/roc_curve_roi.png" width="400">
+<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/roc_curve_full.png" width="400">
 
 ---
 
-## 🚀 Run Locally
+### Precision-Recall Curve
+
+<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/pr_curve_roi.png" width="400">
+<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/pr_curve_full.png" width="400">
+
+---
+
+### Confusion Matrix
+
+<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/confusion_matrix_roi.png" width="400">
+<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/confusion_matrix_full.png" width="400">
+
+---
+
+### Grad-CAM Visualization
+
+<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/gradcam_roi.png" width="400">
+<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/gradcam_full.png" width="400">
+
+---
+
+## Run Locally
 
 ```bash
+git clone https://github.com/saurabhshreni-cmyk/skin-cancer-detection.git
+cd skin-cancer-detection
 pip install -r requirements.txt
 streamlit run app.py
+```
+
+---
+
+## Inference (CLI)
+
+```bash
+python predict.py --image_path "path/to/image.jpg" --mode both
+```
+
+Modes: `roi` | `full` | `both`
+
+---
+
+## Project Structure
+skin-cancer-detection/
+├── app.py
+├── predict.py
+├── config.py
+├── dataset.py
+├── model_unet.py
+├── train_segmentation.py
+├── train_classification.py
+├── generate_evaluation_plots.py
+├── requirements.txt
+├── checkpoints/
+├── assets/
+└── outputs/
+
+---
+
+## Technologies Used
+
+- Python 3.10
+- PyTorch 2.2, Torchvision
+- OpenCV, Albumentations
+- NumPy, Pandas, Scikit-learn
+- Matplotlib, Seaborn
+- Streamlit
+
+---
+
+## Disclaimer
+
+This project is for educational purposes only and is not intended for medical diagnosis.
+
+---
+
+## Author
+
+**Saurabh Dwadash Shreni**  
+B.Tech CSE (AI), Manipal Institute of Technology, Bengaluru  
+[GitHub](https://github.com/saurabhshreni-cmyk)
