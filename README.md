@@ -1,13 +1,7 @@
 # Skin Cancer Detection using Segmentation + Classification
 
 ## Live Demo
-👉 https://skin-cancer-detection-saurabh.streamlit.app
-
----
-## Live Demo
 👉 [https://skin-cancer-detection-saurabh.streamlit.app](https://skin-cancer-detection-saurabh.streamlit.app)
-
----
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.2-red)
@@ -29,11 +23,8 @@ This project presents an end-to-end deep learning pipeline for skin lesion analy
 ### Pipeline
 `Image -> Segmentation -> ROI Extraction -> Classification -> Prediction + Explainability`
 
-### Pipeline
-Image → Segmentation → ROI Extraction → Classification → Prediction + Explainability
 ---
 
-## Demo Features
 ## Demo Features
 
 - Upload dermoscopic image (JPG/PNG)
@@ -59,21 +50,6 @@ Image → Segmentation → ROI Extraction → Classification → Prediction + Ex
 ---
 
 ## Results
-## Dataset
-
-### ISIC 2018 (Segmentation)
-- Input: dermoscopic images
-- Target: binary lesion masks (`*_segmentation.png`)
-- Used for training U-Net segmentation
-
-### ISIC 2020 (Classification)
-- Input: dermoscopic images
-- Target: binary label (`0 = benign`, `1 = malignant`)
-- Used for classification models
-
----
-
-## Results
 
 | Model | Dice Score | ROC-AUC | Accuracy | Recall | F1 |
 |-------|------------|---------|----------|--------|----|
@@ -81,14 +57,12 @@ Image → Segmentation → ROI Extraction → Classification → Prediction + Ex
 | ROI Classifier | — | 0.8746 | 0.8212 | 0.7521 | 0.1293 |
 | Full Image Classifier | — | **0.8793** | 0.8015 | 0.8034 | 0.1251 |
 
----
-
 ## Key Observations
 
 - Full-image model marginally outperforms ROI model on AUC (0.8793 vs 0.8746).
 - ROI model provides better Grad-CAM focus, with activations concentrated around lesion interior.
 - Low precision on both models is expected due to severe class imbalance (~98% benign in ISIC 2020).
-- A fixed threshold of 0.5 on imbalanced data improves recall at the cost of precision, which can be acceptable for screening-style use.
+- A fixed threshold of 0.5 on imbalanced data improves recall at the cost of precision, which is acceptable for screening-focused setups.
 
 ---
 
@@ -99,6 +73,7 @@ Image → Segmentation → ROI Extraction → Classification → Prediction + Ex
 - The model separates classes reasonably; threshold calibration is required for deployment.
 
 ### Future Improvements
+
 - Threshold calibration to clinical sensitivity targets
 - K-fold cross-validation
 - Attention U-Net / DeepLabV3+ for stronger segmentation
@@ -108,49 +83,22 @@ Image → Segmentation → ROI Extraction → Classification → Prediction + Ex
 ---
 
 ## Visual Results
-## Visual Results
 
 ### ROC Curve
 
 <img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/roc_curve_roi.png" width="400">
 <img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/roc_curve_full.png" width="400">
 
----
-
-<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/roc_curve_roi.png" width="400">
-<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/roc_curve_full.png" width="400">
-
----
-
 ### Precision-Recall Curve
 
 <img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/pr_curve_roi.png" width="400">
 <img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/pr_curve_full.png" width="400">
-
----
-
-<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/pr_curve_roi.png" width="400">
-<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/pr_curve_full.png" width="400">
-
----
 
 ### Confusion Matrix
 
 <img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/confusion_matrix_roi.png" width="400">
 <img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/confusion_matrix_full.png" width="400">
 
----
-
-### Grad-CAM Visualization
-
-<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/gradcam_roi.png" width="400">
-<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/gradcam_full.png" width="400">
-
-<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/confusion_matrix_roi.png" width="400">
-<img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/confusion_matrix_full.png" width="400">
-
----
-
 ### Grad-CAM Visualization
 
 <img src="https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/assets/gradcam_roi.png" width="400">
@@ -158,7 +106,6 @@ Image → Segmentation → ROI Extraction → Classification → Prediction + Ex
 
 ---
 
-## Run Locally
 ## Run Locally
 
 ```bash
@@ -184,18 +131,18 @@ Modes: `roi` | `full` | `both`
 
 ```text
 skin-cancer-detection/
-├── app.py                              # Streamlit web app
-├── predict.py                          # Inference script
-├── config.py                           # Configuration settings
-├── dataset.py                          # Dataset loader
-├── model_unet.py                       # U-Net model (segmentation)
-├── train_segmentation.py               # Train segmentation model
-├── train_classification.py             # Train classification model
-├── generate_evaluation_plots.py        # Generate ROC/PR/CM/Grad-CAM plots
-├── requirements.txt                    # Dependencies
-├── checkpoints/                        # Saved model weights (.pth)
-├── assets/                             # Images used in README (GitHub-visible)
-└── outputs/                            # Generated results (ignored in Git)
+├── app.py                                # Streamlit web app
+├── predict.py                            # Inference script
+├── config.py                             # Configuration settings
+├── dataset.py                            # Dataset loader
+├── model_unet.py                         # U-Net model (segmentation)
+├── train_segmentation.py                 # Train segmentation model
+├── train_classification.py               # Train classification model
+├── generate_evaluation_plots.py          # Generate ROC/PR/CM/Grad-CAM plots
+├── requirements.txt                      # Dependencies
+├── checkpoints/                          # Saved model weights (.pth)
+├── assets/                               # Images used in README (GitHub-visible)
+└── outputs/                              # Generated results (usually ignored in Git)
 ```
 
 ---
