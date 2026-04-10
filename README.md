@@ -1,8 +1,8 @@
 
 # Skin Cancer Detection using Segmentation + Classification
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue)
-![Framework](https://img.shields.io/badge/Framework-PyTorch-red)
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Framework](https://img.shields.io/badge/Framework-PyTorch-2.22-red)
 ![Task](https://img.shields.io/badge/Task-Medical%20Imaging-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
