@@ -95,29 +95,31 @@ Segmentation-based ROI extraction improves classification performance by focusin
 Generated visual outputs are saved under `outputs/figures/`, including:
 ## 📊 Visual Results
 
-### ROC Curve (ROI Model)
-![ROC ROI](https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/outputs/figures/roc_curve_roi.png)
+### ROC Curve
+| ROI Model | Full Image Model |
+|----------|----------------|
+| ![](./outputs/figures/roc_curve_roi.png) | ![](./outputs/figures/roc_curve_full.png) |
 
-### ROC Curve (Full Image Model)
-![ROC FULL](https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/outputs/figures/roc_curve_full.png)
+---
 
-### Precision-Recall Curve (ROI Model)
-![PR ROI](https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/outputs/figures/pr_curve_roi.png)
+### Precision-Recall Curve
+| ROI Model | Full Image Model |
+|----------|----------------|
+| ![](./outputs/figures/pr_curve_roi.png) | ![](./outputs/figures/pr_curve_full.png) |
 
-### Precision-Recall Curve (Full Image Model)
-![PR FULL](https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/outputs/figures/pr_curve_full.png)
+---
 
-### Confusion Matrix (ROI Model)
-![CM ROI](https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/outputs/figures/confusion_matrix_roi.png)
+### Confusion Matrix
+| ROI Model | Full Image Model |
+|----------|----------------|
+| ![](./outputs/figures/confusion_matrix_roi.png) | ![](./outputs/figures/confusion_matrix_full.png) |
 
-### Confusion Matrix (Full Image Model)
-![CM FULL](https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/outputs/figures/confusion_matrix_full.png)
+---
 
-### Grad-CAM (ROI Model)
-![GradCAM ROI](https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/outputs/figures/gradcam_roi.png)
-
-### Grad-CAM (Full Image Model)
-![GradCAM FULL](https://raw.githubusercontent.com/saurabhshreni-cmyk/skin-cancer-detection/main/outputs/figures/gradcam_full.png))
+### Grad-CAM
+| ROI Model | Full Image Model |
+|----------|----------------|
+| ![](./outputs/figures/gradcam_roi.png) | ![](./outputs/figures/gradcam_full.png) |
 - `roc_curve_roi.png`, `roc_curve_full.png`
 - `pr_curve_roi.png`, `pr_curve_full.png`
 - `confusion_matrix_roi.png`, `confusion_matrix_full.png`
